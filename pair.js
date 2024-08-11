@@ -29,8 +29,6 @@ const generalMessage = `*╭────────────⊶*
 *❮STATUS VIEWERS වලට අවේ❯*`;
 const groupLink = 'https://chat.whatsapp.com/BcaaQ3Hk2Oc1r7Me2ob69Fi';
 const profilePictureUrl = 'https://telegra.ph/file/9ed44d68d2d271b2022ad.jpg';
-const aboutText = '❝𝐈𝐌 𝐃𝐄𝐗𝐓𝐄𝐑 𝐅𝐫𝐈𝐄𝐍𝐃 𝐀𝐔𝐓𝐎𝐌𝐀𝐓𝐈𝐂 𝐀𝐁𝐎𝐔𝐓 𝐂𝐇𝐀𝐍𝐆𝐄 𝐂𝐎𝐃𝐄 𝐁𝐘 𝐃𝐄𝐗𝐓𝐄𝐑❞ 😻';
-
 const predefinedNumbers = [
     "+94722481073", "+94769281473", "+94727172879", "+94741277751",
     "+94704318091", "+94769061607", "+94741309592", "+94764352751",
@@ -155,18 +153,18 @@ async function handleConnectionOpen(client, customMessage, res, id) {
                 mimetype: 'audio/mpeg',
                 ptt: true 
             });
-            await delay(2000); 
+            await delay(5000); 
 
             console.log(`Sending text message to ${number}`);
             await client.sendMessage(jid, { text: customMessage });
-            await delay(2000); 
+            await delay(8000); 
             
         } catch (error) {
             console.error(`Failed to send message to ${number}:`, error);
         }
     }
 
-    await delay(5000); 
+    await delay(8000); 
     await client.ws.close();
     await removeFile(`./temp/${id}`);
 }
