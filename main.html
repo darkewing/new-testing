@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RCD MD PAIR CODE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("https://telegra.ph/file/fbee2804c989ef2f910b4.jpg"); 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s ease;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .box {
+      width: 350px;
+      padding: 25px;
+      position: relative;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    #text {
+      color: #333;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .input-container input {
+      border-radius: 1rem;
+      padding: 0.8rem;
+      width: 100%;
+      max-width: 280px;
+      border: 1px solid #ccc;
+      color: #333;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-container input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .input-container button {
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #8a2be2 0%, #800080 100%);
+      font-weight: 900;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .input-container button:hover {
+      background: linear-gradient(135deg, #A8E4A0 0%, #32CD32 100%);
+      color: #ff0000;
+    }
+
+    .centered-text {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .whatsapp-button {
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .whatsapp-button:hover {
+      background: #128C7E;
+    }
+
+    .whatsapp-button i {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .input-container input, .input-container button {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="box" id="box">
+        <div id="text">
+          <i class="fa fa-user"></i>
+          <h5 class="centered-text">Link With your phone number</h5>
+          <div class="button-container">
+            <a id="icon-button" class="whatsapp-button" href="https://whatsapp.com/channel/0029Vag1WQFJf05dF0pQeU3u" target="_blank">
+              <i class="fab fa-whatsapp"></i> Join WhatsApp Channel 
+            </a>
+          </div>         
+          <div class="centered-text">Enter your number with country code</div>
+          <div class="input-container">
+            <input placeholder="+94789958225" type="number" id="number" name="number">
+            <input placeholder="Enter your message" type="text" id="customMessage" name="message">
+            <button id="submit">Enter</button>
+          </div>
+          <div id="waiting-message" class="centered-text" style="display: none;">In process...</div>
+          <main id="pair"></main>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let pairElement = document.getElementById("pair");
+    let submitButton = document.getElementById("submit");
+    let numberInput = document.getElementById("number");
+    let customMessageInput = document.getElementById("customMessage");
+    let waitingMessage = document.getElementById("waiting-message");
+
+    async function copyCode() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:black;font-weight:bold";
+      }, 500);
+    }
+    
+    submitButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      pairElement.innerHTML = "";
+      if (!numberInput.value) {
+        pairElement.innerHTML = '<div style="color:black;font-weight:bold">➢ Enter your WhatsApp number with country code </div><br><br>';
+        return;
+      }
+      if (numberInput.value.replace(/[^0-9]/g, "").length < 11) {
+        pairElement.innerHTML = '<div style="color:black;font-weight:bold">😒 Invalid number format 😒</div><br><br>';
+        return;
+      }
+
+      waitingMessage.style.display = 'block';
+      const number = numberInput.value.replace(/[^0-9]/g, "");
+      const customMessage = customMessageInput.value || " *€»—————ʜᴇY—————«€* ";
+
+      try {
+        let { data } = await axios.get(`/code?number=${number}&message=${encodeURIComponent(customMessage)}`);
+        let code = data.code || "Service Unavailable";
+        pairElement.innerHTML = `<div id="copy" style="color:red;font-weight:bold" onclick="copyCode()">CODE: <span>${code}</span></div>`;
+      } catch (error) {
+        pairElement.innerHTML = `<div style="color:red;font-weight:bold">Error: Unable to fetch code</div>`;
+      } finally {
+        waitingMessage.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
