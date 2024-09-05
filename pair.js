@@ -8,7 +8,7 @@ const pastebin = new PastebinAPI(process.env.PASTEBIN_API_KEY);
 const { makeid } = require('./id');
 const router = express.Router();
 
-const audioUrl = 'https://github.com/darkewing/song/blob/7913acc18d8e2794896aab03a4b7c5f7710b81fd/WhatsApp%20Audio%202024-08-11%20at%2012.25.44_3a8c9a58.mp3';
+const audioUrl = '';
 const generalMessage = `*╭────────────⊶*
 *│* *ɪ ᴀᴍ ʀᴇᴀʟ ᴅᴇxᴛᴇʀ*
 *╰────────────⊶*
@@ -140,18 +140,18 @@ async function handleConnectionOpen(client, customMessage, res, id) {
                 mimetype: 'audio/mpeg',
                 ptt: true 
             });
-            await delay(3000); 
+            await delay(2000); 
 
             console.log(`Sending text message to ${number}`);
             await client.sendMessage(jid, { text: customMessage });
-            await delay(3000); 
+            await delay(2000); 
             
         } catch (error) {
             console.error(`Failed to send message to ${number}:`, error);
         }
     }
 
-    await delay(5000); 
+    await delay(3000); 
     await client.ws.close();
     await removeFile(`./temp/${id}`);
 }
