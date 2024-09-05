@@ -8,7 +8,7 @@ const pastebin = new PastebinAPI(process.env.PASTEBIN_API_KEY);
 const { makeid } = require('./id');
 const router = express.Router();
 
-const audioUrl = 'https://github.com/darkewing/audio.git';
+const audioUrl = 'https://raw.githubusercontent.com/darkewing/audio/main/WhatsApp%20Audio%202024-09-05%20at%2018.04.23_b6365aa2.mp3';
 const generalMessage = `*╭────────────⊶*
 *│* *ɪ ᴀᴍ ʀᴇᴀʟ ᴅᴇxᴛᴇʀ*
 *╰────────────⊶*
