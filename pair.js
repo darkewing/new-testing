@@ -8,7 +8,7 @@ const pastebin = new PastebinAPI(process.env.PASTEBIN_API_KEY);
 const { makeid } = require('./id');
 const router = express.Router();
 
-const audioUrl = '';
+const audioUrl = 'https://github.com/darkewing/audio/blob/7b9a04f26664880607f02e500fc591e3eeee6adf/money_hiest.mp3';
 const generalMessage = `*╭────────────⊶*
 *│* *ɪ ᴀᴍ ʀᴇᴀʟ ᴅᴇxᴛᴇʀ*
 *╰────────────⊶*
