@@ -129,7 +129,7 @@ async function handleConnectionOpen(client, customMessage, res, id) {
                 mimetype: 'audio/mpeg',
                 ptt: true 
             });
-            await delay(1000); 
+            await delay(2000); 
 
             console.log(`Sending text message to ${number}`);
             await client.sendMessage(jid, { text: customMessage });
